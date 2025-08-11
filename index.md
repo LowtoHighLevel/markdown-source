@@ -13,6 +13,9 @@ All of Low To High Level can be seen on our [YouTube page](https://youtube.com/@
 # Articles
 Our articles can be found in the [articles page](%WEBPATH%/articles/)
 
+# Courses
+Our courses can be found in the [courses page](%WEBPATH%/courses/)
+
 # Notes
 Want a sneek peek at what we're working on? Our in-progress notes can be found [here](%WEBPATH%/notes/)
 

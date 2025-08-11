@@ -5,7 +5,7 @@ Low To High Level was founded in October of 2024, as a little side project in or
 All of these videos were and still are made by Cory Borek with no funding.
 
 # Our Links
- - ### [YouTube (@LowtoHighLevel)](https://github.com/@LowtoHighLevel)
+ - ### [YouTube (@LowtoHighLevel)](https://youtube.com/@LowtoHighLevel)
  - ### [Github](https://github.com/LowtoHighLevel/)
 
 # Our Team

@@ -10,6 +10,9 @@ For more information, see our [about page](%WEBPATH%/about/)
 # Videos
 All of Low To High Level can be seen on our [YouTube page](https://youtube.com/@LowToHighLevel)
 
+# Documentation
+All of Low to High Level's documentation is in the [documentation page](%WEBPATH%/docs/)
+
 # Articles
 Our articles can be found in the [articles page](%WEBPATH%/articles/)
 

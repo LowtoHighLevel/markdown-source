@@ -3,7 +3,8 @@ This is our course on Discrete Mathematics.
 
 It is currently not complete, nor is anything edited, but this will be our starting ground.
 
-## [Chapters] - [01 - A Brief Reflection](%WEBPATH%/courses/discretemath/chapters/01)
+## [Chapters](%WEBPATH%/courses/discretemath/chapters/)
+ - [01 - A Brief Reflection](%WEBPATH%/courses/discretemath/chapters/01)
  - [02 - Propositions](%WEBPATH%/courses/discretemath/chapters/02)
  - [03 - Propositional Logic](%WEBPATH%/courses/discretemath/chapters/03)
  - [04 - Enter Boolean Algebra](%WEBPATH%/courses/discretemath/chapters/04)

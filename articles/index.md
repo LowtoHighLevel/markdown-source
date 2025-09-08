@@ -7,7 +7,7 @@ All Articles will be available here.
 
 
 ## By Year
-- [2025](%WEBPATH/articles/2025/)
+- [2025](%WEBPATH%/articles/2025/)
 
 
 - ### [Back To Home](%WEBPATH%)

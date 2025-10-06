@@ -15,7 +15,7 @@ Cory is a full-time Computer Science student at the University of Georgia pursui
 
 ### Cory's Links
  - [Github](https://github.com/CoryBorek)
- - [GH Page](https://coryborek.github.io)
+ - [Portfolio Website](https://coryborek.github.io)
  - [Website](https://agentdid127.com/)
  - [Gaming YouTube](https://youtube.com/@agentdid127)
  - [Music YouTube](https://youtube.com/@CoryBorek)

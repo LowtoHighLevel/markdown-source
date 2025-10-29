@@ -4,6 +4,6 @@ It's documentation can be found here.
 
 
 ### Links
- - [Arch](%WEBPATH%/docs/v2/arch)
+ - [Base Architecture](%WEBPATH%/docs/v2/arch-base)
 
 ### [Back To Docs](%WEBPATH%/docs/)

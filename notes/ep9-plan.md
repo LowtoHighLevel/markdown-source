@@ -1,27 +1,48 @@
 # Episode 9 Planning
-Last time on LTHL, we wrote a quick program in machine code that prints to the screen.
+Last time on Low To High Level, we wrote a quick program in Machine code to see if our idea of a computer will work.
 
-I have a few gripes with the current system though.
+This time, I want to take that a step further.
 
-The biggest issue I have is that parts of the binary source is not completely relocatable. Another issue is that there is no way to have some sort of hardware/software interrupt, which may be useful for input in the future.
+I would love to do a deep dive into the GNU Binutils suite, but that is quite difficult and time-consuming for what I want to get done right now.
 
-One way around that is to poll for interrupts via code for now, but that may be a little long-winded, and a pain to do when we should have it handle it immediately. Instead, I would like to have a vector table that jumps to a memory address whenever an interrupt is called, and puts the current memory address in a position in RAM. that would be a little more beneficial to us in the end.
+In the mean time, I have a few small gripes with how our CPU works as of right now.
 
-I'm looking for this to be an array of 32 bit addresses, with a pointer to that array at memory address 0.
+As a way to try and rectify that, I have a few small improvements that can be made.
 
-This will mean that the vector table could theoretically be moved, and relocated if it ever needed to be expanded in the future.
+Off-camera, I went back through the old CPU code, added comments, and generally cleaned things up. Functionally, it is exactly the same as it was.
 
-Of course, it's not always that simple, but it definitely is what I am thinking of doing.
+My biggest issue with the CPU is that I don't have any way to handle any input. With the current design, all i/o is mapped to RAM, which is nice to have, but isn't always the most useful.
 
-This episode will involve discussing what I previously did, and looking at a few other options similar to what I would like to implement when needed.
+To see if we need to handle something from i/O we would have to be constantly checking if it is necessary, when instead we could just have an interrupt.
 
-The unfortunate thing about what I would like to do, is that it will cost a few cycles, but that's not the end of the world.
+My plan is to add a few new flags to the CPU to handle interrupts, as well as to add a few new registers to allow for an interrupt to be triggered. In order for this to work, we're going to have to use a few extra little tools.
 
-Another possibility is to use some of our registers as the interrupt vectors. In that case, we would yoink the current address into a register, jump to the position in the register of the interrupt vector, and output that. Now that I am thinking about it, the vector table could be more of an implementation concern as opposed to the actual program. That means that our bios/bootloader will actually load the correct registers when the time comes.
+I wrote a partial assembler off-camera a long time ago, and though it's not exactly what I hoped for, it may be enough to get a couple of quick programs testing.
 
-Let's say that by convention, r31 is always the return address, r30 is the interrupt vector, and r29 is the stack pointer. That will make it possible to handle all of it at once. Triggering an interrupt will push an item onto the stack, with the other stuff happening. We could also have an "interrupt enable" flag that allows or disallows interrupts, which means that the programmer can make sure that interrupts will happen only if the stack is properly set up. This also gives a best of both worlds scenario, where any current programs will not break.
+Remember that program that we wrote last time? Here it is in our temporary assembly language.
 
+```asm
+    ld r1 16384
+    ld r2 'H'
+    write r1 r2
+    ld r2 'I'
+    write r1 r2
+    ld r2 '!'
+    write r1 r2
+    ld r2 '\n'
+    write r1 r2
+    ld r30 36000
+```
 
-So, in laymans terms, here's the official plan:
+This should function exactly how our hand-assembled program did and will be easier to test.
 
-1.) Add a few new instructions: 
+Now that we have a quick little program to test things, we can try to set up some code to handle interrupts.
+
+We will need to add a few new flags to the CPU, an interrupt enable flag, and an interrupt flag. The enable flag will let the CPU know that we can receive interrupts, and the interrupt flag will let us know that there is currently an interrupt being handled.
+
+I wrote [this site](https://lowtohighlevel.github.io/) to house some notes and documentation on the CPU and project. I also sometimes write some articles on my progress on this project.
+
+If we look at our documentation, we have a base case of how the architecture works, and how our interrupts work.
+
+With the latest version of the documentation, our emulator is a little out of date, so we will need to update it to support modifying flags, as well as a few other features.
+

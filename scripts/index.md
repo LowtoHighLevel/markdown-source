@@ -1,4 +1,6 @@
 # Scripts
-This is a non-indexed page on the site, where I will post my scripts for videos. Anything that needs a script, will go here.
+This is where I will keep my in-progress scripts for Low To High Level.
 
-[Episode 8](%WEBPATH%/scripts/ep8)
+You can find the different episode's scripts in the sidebar.
+
+This part of the site should not be linked to the main site, though should be accessible for those who want to find it.

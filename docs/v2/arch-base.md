@@ -115,11 +115,37 @@ condition - see below
 
 addrreg - 8 bits, address that stores the location to jump to.
 
-### Unused Instructions
+### EXT1
+```
+110 CMD
+```
 
-110 - For future expansion (most likely will be a set-flag instruction)
+110 - Determines that this is part of the extension set
 
-111 - Add-Ons (any specific chipset implementation / add-on features will start with 111, and the first byte will determine the rest of the features).
+CMD - the extension instruction, determined by the extensions
+
+#### GET_SUPPORTED
+```
+110 00000 IGNORE(16bit) outreg
+```
+110 - Determines that its an extension command in EXT1
+00000 - Determines that this is a GET_SUPPORTED function
+
+IGNORE - 16 bits in the instruction that are ignored.
+
+outreg - 8 bit register to write the supported features to
+
+This instruction will return a Bitset of what extensions are available.
+
+A value of 0, means that this is just the base set.
+
+### EXT2
+```
+111 CMD
+```
+Also a part of the extension featureset.
+
+No extensions support this instruction as of yet.
 
 
 ## Conditions

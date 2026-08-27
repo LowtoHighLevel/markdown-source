@@ -18,7 +18,7 @@ For example, an *r-type* instruction starts with `000`.
 
 ### R-Type
 ```
-000 NEGB CARRYIN aluop outreg areg breg
+000 NEGB CARRYIN aluop areg breg outreg
 ```
 
 000 - Determines that it is an R-type instruction, and will use the ALU.

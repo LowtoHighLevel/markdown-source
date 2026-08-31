@@ -1,12 +1,11 @@
 # Architecture Notes
 
-The LTHLv2 Architecure is a 32-bit system that is relatively bare-bones in terms of implementation. The current goal with the architecture is to have a few bare-bones instructions that can be handled, with more to come much later.
+The LTHLv2 Architecure is a 32-bit little-endian system that is relatively bare-bones in terms of implementation. The current goal with the architecture is to have a few bare-bones instructions that can be handled, with more to come much later.
 
 In terms of how the data is handled, there is a 32-bit data bus, with all data being 32-bits. This takes inspiration from both the RISC-V and MIPS architectures.
 
 
 This page determines the base instruction set. for LTHLv2.
-
 
 ## Instruction Types
 
@@ -62,7 +61,7 @@ data - 24 bits (3 bytes) data to immediately load into register.
 
 ### MEMREAD
 ```
-010 00000 IN 00000000 STORE
+010 000 MODE ADDR-REG 00000000 DATA-REG
 ```
 this reads the value at register IN and stores it into register STORE.
 
@@ -70,13 +69,15 @@ this reads the value at register IN and stores it into register STORE.
 
 00000 - All zeroes, unused
 
-IN - 8 bit register that has the address we are reading from
+MODE - (00) - 32 bit, (01) - 16 bit mode, (10) - 8 bit mode
 
-STORE - 8 bit register in which we write the data to.
+ADDR-REG - 8 bit register that has the address we are reading from
+
+DATA-REG - 8 bit register in which we write the data to.
 
 ### MEMWRITE
 ```
-011 00000 ADDR-REG DATA-REG 00000000
+011 000 MODE ADDR-REG DATA-REG 00000000
 ```
 
 This writes the value DATA-REG to address ADDR-REG
@@ -84,6 +85,8 @@ This writes the value DATA-REG to address ADDR-REG
 011 - Determines that it is a MEMWRITE
 
 any 0s are undefined
+
+MODE - (00) - 32 bit, (01) - 16 bit mode, (10) - 8 bit mode
 
 ADDR-REG - 8 bit register with address to write to
 
@@ -183,4 +186,4 @@ The current development emulator takes a raw binary program of instructions, loa
 3.) Read startup vector from last 4 bytes of memory and set it to the instruction pointer (r31) 
 4.) ready to execute!
 
-### [Back To v1](%WEBPATH%/docs/v2/)
+### [Back To v2](%WEBPATH%/docs/v2/)
